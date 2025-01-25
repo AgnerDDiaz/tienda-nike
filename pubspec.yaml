@@ -1,0 +1,29 @@
+name: sneaker_store
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  provider: ^6.1.2
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/nike.png
+    - assets/images/nike_2.png
+    - assets/images/sneakers-1.png
+    - assets/images/sneakers-2.jpg
+    - assets/images/sneakers-3.png
+    - assets/images/sneakers-4.png
