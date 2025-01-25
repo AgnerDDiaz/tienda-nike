@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:sneaker_store/models/cart_model.dart';
 import 'package:provider/provider.dart';
+import 'package:sneaker_store/Splash.dart';
+import 'package:sneaker_store/models/cart_model.dart';
+import 'package:sneaker_store/widgets/shoe_card.dart';
+
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -8,41 +11,78 @@ class HomeScreen extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
 
     return Scaffold(
+      backgroundColor: Colors.grey[400], // Fondo gris
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.grey[400],
         elevation: 0,
         title: AnimatedSearchBar(),
-        leading: Icon(Icons.menu, color: Colors.black),
-        actions: [Icon(Icons.shopping_cart, color: Colors.black)],
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu, color: Colors.black),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
       ),
-      body: ListView.builder(
-        itemCount: cart.shoeShop.length,
-        itemBuilder: (context, index) {
-          final shoe = cart.shoeShop[index];
-          return Card(
-            margin: EdgeInsets.all(10),
-            child: ListTile(
-              leading: Image.asset(shoe.imagePath, width: 50),
-              title: Text(shoe.name),
-              subtitle: Text('\$${shoe.price}'),
-              trailing: IconButton(
-                icon: Icon(Icons.add),
-                onPressed: () {
-                  cart.addItemToCart(shoe);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('${shoe.name} added to cart')),
-                  );
+      drawer: Drawer(
+        child: Column(
+          children: [
+            DrawerHeader(
+              child: Image.asset('assets/images/nike_2.png'), // Logo en el Drawer
+            ),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text('Home'),
+              onTap: () {},
+            ),
+            ListTile(
+              leading: Icon(Icons.info),
+              title: Text('About'),
+              onTap: () {},
+            ),
+            Spacer(),
+            ListTile(
+              leading: Icon(Icons.logout),
+              title: Text('Logout'),
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => SplashScreen()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Hot Picks 🔥",
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10),
+            Expanded(
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal, // Mostrar tarjetas en horizontal
+                itemCount: cart.shoeShop.length,
+                itemBuilder: (context, index) {
+                  final shoe = cart.shoeShop[index];
+                  return ShoeCard(shoe: shoe); // Usa el widget ShoeCard
                 },
               ),
+
             ),
-          );
-        },
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Shop'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), label: 'Cart'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: 'Cart'),
         ],
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart'; // Import necesario
 import 'package:sneaker_store/models/shoe_model.dart';
 
+
 class Cart extends ChangeNotifier {
   // Lista de zapatos disponibles
   List<Shoe> shoeShop = [
