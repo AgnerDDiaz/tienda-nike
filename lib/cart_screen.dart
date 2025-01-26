@@ -9,10 +9,10 @@ class CartScreen extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
 
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      backgroundColor: Colors.grey[300],
       appBar: AppBar(
         title: Center(child: Text("My Cart          ", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 28))),
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Colors.grey[300],
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black),
       ),
@@ -62,11 +62,11 @@ class CartScreen extends StatelessWidget {
         itemBuilder: (context, index) {
           final shoe = cart.getUserCart()[index];
           return Card(
-            color: Colors.grey[300],
+            color: Colors.grey[100],
 
             margin: const EdgeInsets.only(left: 20, top: 10, right: 20),
             child: ListTile(
-              leading: Image.asset(shoe.imagePath, width: 80),
+              leading: Image.asset(shoe.imagePath, width: 100,),
               title: Text(shoe.name, style: TextStyle(fontWeight: FontWeight.bold)),
               subtitle: Text("\$${shoe.price}"),
               trailing: IconButton(

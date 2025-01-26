@@ -16,7 +16,7 @@ class ShoeCard extends StatelessWidget {
       margin: const EdgeInsets.only(left: 10, top: 15, right: 10,), // Margen superior
       width: 290, // Ancho de la tarjeta
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Colors.grey[100],
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(

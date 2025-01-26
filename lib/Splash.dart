@@ -7,7 +7,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400], // Fondo más oscuro
+      backgroundColor: Colors.grey[300], // Fondo más oscuro
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20), // Márgenes generales
@@ -22,8 +22,8 @@ class SplashScreen extends StatelessWidget {
               Text(
                 'Just Do It',
                 style: TextStyle(
-                  fontSize: 20, // Tamaño del texto más grande
-                  fontWeight: FontWeight.bold,
+                  fontSize: 24, // Tamaño del texto más grande
+                  fontWeight: FontWeight.w800,
                   letterSpacing: 1.2,
                 ),
               ),
@@ -33,7 +33,7 @@ class SplashScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 16,
-                  color: Colors.grey[600],
+                  color: Colors.grey[700],
                   height: 1.5, // Ajustar espaciado entre líneas
                 ),
               ),

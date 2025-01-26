@@ -12,9 +12,9 @@ class HomeScreen extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
 
     return Scaffold(
-      backgroundColor: Colors.grey[400], // Fondo gris
+      backgroundColor: Colors.grey[300], // Fondo gris
       appBar: AppBar(
-        backgroundColor: Colors.grey[400],
+        backgroundColor: Colors.grey[300],
         elevation: 0,
         leading: Builder(
           builder: (context) => IconButton(
