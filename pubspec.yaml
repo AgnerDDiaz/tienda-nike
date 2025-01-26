@@ -22,7 +22,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/nike.png
+    - assets/images/nike4.png
+    - assets/images/img.png
     - assets/images/nike_2.png
+    - assets/images/nike_3.png
     - assets/images/sneakers-1.png
     - assets/images/sneakers-2.jpg
     - assets/images/sneakers-3.png

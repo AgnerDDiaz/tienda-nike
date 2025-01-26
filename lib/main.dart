@@ -13,14 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => Cart(), // Aquí configuramos el Provider para Cart
+      create: (context) => Cart(), // Configuramos el Provider para Cart
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Sneaker Store',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.red,
         ),
-        home: SplashScreen(), // Pantalla inicial
+        home: SplashScreen(), // Inicia con la pantalla SplashScreen
       ),
     );
   }

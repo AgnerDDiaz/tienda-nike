@@ -13,15 +13,15 @@ class ShoeCard extends StatelessWidget {
     final cart = Provider.of<Cart>(context);
 
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      width: 200, // Ancho de la tarjeta
+      margin: const EdgeInsets.only(left: 10, top: 15, right: 10,), // Margen superior
+      width: 290, // Ancho de la tarjeta
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
             color: Colors.black26,
-            blurRadius: 4,
+            blurRadius: 2,
             offset: Offset(2, 2),
           ),
         ],
@@ -29,58 +29,74 @@ class ShoeCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            child: ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
-              child: Image.asset(
-                shoe.imagePath,
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
+          // Imagen en la parte superior
+          ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+            child: Image.asset(
+              shoe.imagePath,
+              height: 400, // Aumentar altura de la imagen
+              width: double.infinity,
+              fit: BoxFit.contain, // Asegura que la imagen sea visible
             ),
           ),
+          // Descripción
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              shoe.name,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Text(
-              "\$${shoe.price}",
-              style: TextStyle(fontSize: 14, color: Colors.grey[700]),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 14, top: 30, right: 14),
             child: Text(
               shoe.description,
-              style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+              style: TextStyle(fontSize: 14, color: Colors.grey[600]),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
           ),
+          // Nombre, precio y botón
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () {
-                cart.addItemToCart(shoe);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text("${shoe.name} added to cart")),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+            padding: const EdgeInsets.only(left: 8, top: 10, right: 0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                // Nombre y precio
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        shoe.name,
+                        style: const TextStyle(
+                            fontSize: 22, fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "\$${shoe.price}",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey[700],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 8),
-              ),
-              child: const Center(
-                child: Icon(Icons.add, color: Colors.white),
-              ),
+                // Botón cuadrado para añadir al carrito
+                Container(
+                  height: 80,
+                  width: 80,
+                  decoration: const BoxDecoration(
+                    color: Colors.black, // Fondo negro
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8),
+                      bottomRight: Radius.circular(15),
+                    ),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.add, color: Colors.white),
+                    onPressed: () {
+                      cart.addItemToCart(shoe);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Item added to cart")),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           ),
         ],

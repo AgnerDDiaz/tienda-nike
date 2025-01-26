@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sneaker_store/main_screen.dart';
 import 'HomeScreen.dart';
 
 
@@ -43,7 +44,7 @@ class SplashScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()),
+                      MaterialPageRoute(builder: (context) => MainScreen()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
